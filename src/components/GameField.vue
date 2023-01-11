@@ -1,7 +1,13 @@
 <template>
     <div class="wrapper">
         <div class="top-row">
-            <div class="box box-big"></div>
+            <div class="box box-big">
+                <div class="parking">
+                    <span class="free-parking">Free</span>
+                    <font-awesome-icon icon="fa-solid fa-car" class="parking-img"/>
+                    <span class="parking-parking">Parking</span>
+                </div>
+            </div>
             <div class="box">
                 <div class="top-street-col red"></div>
                 <p class="top-street-name">Strand</p>
@@ -46,7 +52,13 @@
                 <p class="top-street-name">Piccadilly</p>
                 <p class="price price-top"> <span class="price-label">M</span> 280</p>
             </div>
-            <div class="box box-big"></div>
+            <div class="box box-big">
+                <div class="policeman">
+                    <span class="goto-policeman">Go To</span>
+                    <font-awesome-icon icon="fa-solid fa-person-military-pointing" class="policeman-img"/>
+                    <span class="jail-policeman">Jail</span>
+                </div>
+            </div>
         </div>
         <div class="side-rows">
             <div class="left-row">
@@ -95,6 +107,7 @@
                     <p class="price price-left"> <span class="price-label">M</span> 140</p>
                 </div>
             </div>
+            <mon-dices></mon-dices>
             <div class="right-row">
                 <div class="box">
                     <div class="right-street-col green"></div>
@@ -142,7 +155,17 @@
             </div>
         </div>
         <div class="bottom-row">
-            <div class="box box-big"></div>
+            <div class="box box-big">
+                <span class="just-jail">Just</span>
+                <span class="visiting-jail">Visiting</span>
+                <div class="jail">
+                    <div class="jail-img">
+                        <span class="in-jail">In</span>
+                        <font-awesome-icon icon="fa-solid fa-handcuffs" class="handcluffs"/>
+                        <span class="jail-jail">Jail</span>
+                    </div>
+                </div>
+            </div>
             <div class="box">
                 <div class="bottom-street-col light-blue"></div>
                 <p class="bottom-street-name">Pentonville Road</p>
@@ -186,7 +209,10 @@
                 <p class="bottom-street-name">Old Kent Road</p>
                 <p class="price price-bottom"> <span class="price-label">M</span> 60</p>
             </div>
-            <div class="box box-big"></div>
+            <div class="box box-big">
+                <p class="start">Collect <br><span class="current">M</span> 200 Salary <br> as You Pass <br><span class="go">GO</span></p>
+                <img src="../assets/img/arrow.png" alt="" class="start-arrow">
+            </div>
         </div>
         
         
@@ -194,8 +220,11 @@
 </template>
 
 <script>
-export default {
 
+import MonDices from '@/components/MonDices.vue';
+
+export default {
+    components: {MonDices}
 }
 </script>
 
@@ -222,12 +251,8 @@ body{
     width: 20px;
     height: 20px;
 
-    
-
     border: 1px solid grey;
 }
-
-
 
 /* Верхний и нижний ряды */
 
@@ -250,8 +275,6 @@ body{
     height: 77px;
 }
 
-
-
 /* Левый и правый ряды */
 
 .side-rows {
@@ -264,6 +287,147 @@ body{
     height: 59px;
 
     position: relative;
+}
+
+/* Start */
+
+.start {
+    font-size: 10px;
+    transform: rotate(315deg);
+    text-align: center;
+    position: absolute;
+    top: -5px;
+    left: 7px;
+}
+
+.start .go {
+    font-size: 15px;
+}
+
+.start .current {
+    text-decoration: line-through;
+}
+
+.start-arrow {
+    transform: rotate(180deg);
+    display: block;
+    width: 50px;
+    height: 15px;
+    position: absolute;
+    left: 12px;
+    bottom: 3px;
+}
+
+/* Jail */
+
+.just-jail, .visiting-jail {
+    display: block;
+    position: absolute;
+}
+
+.just-jail {
+    transform: rotate(90deg);
+    top: 17px;
+    left: -2px;
+}
+
+.visiting-jail {
+    left: 22px;
+    top: 57px;
+}
+
+.jail {
+    width: 55px;
+    height: 55px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: orange;
+}
+
+.jail-img {
+    transform: rotate(45deg);
+    position: absolute;
+    top: 12px;
+    left: 12px;
+}
+
+.in-jail, .jail-jail {
+    font-size: 12px;
+}
+
+.in-jail, .jail-jail, .handcluffs {
+    position: absolute;
+}
+
+.in-jail {
+    top: -29px;
+    left: 16px;
+}
+
+.handcluffs {
+    font-size: 19px;
+    top: -12px;
+    left: 10px;
+}
+
+.jail-jail {
+    top: 12px;
+    left: 14px;
+}
+
+/* Free Parking */
+
+.parking {
+    transform: rotate(135deg);
+}
+
+.free-parking, .parking-img, .parking-parking {
+    font-size: 15px;
+    position: absolute;
+}
+
+.free-parking {
+    top: -69px;
+    left: 53px;
+}
+
+.parking-img {
+    font-size: 37px;
+    top: -50px;
+    left: 47px;
+    color: red;
+}
+
+.parking-parking {
+    top: -12px;
+    left: 41px;
+}
+
+/* Policeman */
+
+.policeman {
+    transform: rotate(225deg);
+}
+
+.goto-policeman, .policeman-img, .jail-policeman {
+    position: absolute;
+    font-size: 15px;
+}
+
+.goto-policeman {
+    top: -67px;
+    left: -7px;
+}
+
+.policeman-img {
+    font-size: 35px;
+    top: -44px;
+    left: -10px;
+}
+
+.jail-policeman {
+    top: -3px;
 }
 
 /* Улицы */
